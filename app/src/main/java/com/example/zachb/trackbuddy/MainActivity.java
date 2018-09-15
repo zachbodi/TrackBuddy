@@ -148,4 +148,4 @@ public class MainActivity extends AppCompatActivity {
 
         return (pacePrefix + String.format("%02d", Minutes) + ":" + String.format("%02d", Seconds) + "." + String.format("%02d", CentiSeconds));
     }
-}
+}//github test
