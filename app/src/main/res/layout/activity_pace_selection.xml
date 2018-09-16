@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PaceSelection">
+
+    <EditText
+        android:id="@+id/distanceInput"
+        android:layout_width="248dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="68dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="128dp"
+        android:ems="10"
+        android:hint="Event Distance"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/lapDistanceInput"
+        android:layout_width="248dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="68dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="9dp"
+        android:ems="10"
+        android:hint="Lap Distance"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/distanceInput" />
+
+    <EditText
+        android:id="@+id/minInput"
+        android:layout_width="57dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="115dp"
+        android:layout_marginStart="115dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="min"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lapDistanceInput" />
+
+    <EditText
+        android:id="@+id/secInput"
+        android:layout_width="51dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="7dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="sec"
+        android:inputType="number"
+        app:layout_constraintStart_toEndOf="@+id/colon"
+        app:layout_constraintTop_toBottomOf="@+id/lapDistanceInput" />
+
+    <TextView
+        android:id="@+id/colon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="7dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="17dp"
+        android:text=":"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/minInput"
+        app:layout_constraintTop_toBottomOf="@+id/lapDistanceInput" />
+
+    <Button
+        android:id="@+id/beginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="138dp"
+        android:text="Begin Session"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="130dp" />
+
+</android.support.constraint.ConstraintLayout>

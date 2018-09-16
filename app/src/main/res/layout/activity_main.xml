@@ -195,7 +195,8 @@
         app:layout_constraintBottom_toTopOf="@+id/goalLapDisplay"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resetButton" />
+        app:layout_constraintTop_toBottomOf="@+id/resetButton"
+        android:onClick="launchSecondActivity" />
 
     <Button
         android:id="@+id/resetButton"

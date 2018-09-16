@@ -1,5 +1,6 @@
 package com.example.zachb.trackbuddy;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
 import android.os.SystemClock;
@@ -9,20 +10,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.io.Console;
-
 public class MainActivity extends AppCompatActivity {
 
-    long startTime, currentTime, timeRunning, timeRan, thisLapTime, lastLapEnd, pace, paceAbs, timeToConfirm = 0;
-    int Seconds, Minutes, CentiSeconds;
-    boolean running, confirmEnd = false;
-    String pacePrefix;
+    public static final String NUM_ERROR = "com.example.zachb.trackbuddy.extra.NUM_ERROR";
 
-    long goalTimeMillis = 40000;
-    long totalDistance = 400;
-    long lapDistance = 100;
-    long numLaps = totalDistance/lapDistance;
-    long goalLapMillis = goalTimeMillis/numLaps;
+    long startTime, currentTime, timeRunning, timeRan, thisLapTime, lastLapEnd, pace, paceAbs, goalLapMillis = 0;
+    int Seconds, Minutes, CentiSeconds;
+    boolean running = false;
+    String pacePrefix;
 
     TextView timeDisplay, goalLapDisplay, paceDisplay, lastLapDisplay, goalTimeDisplay, thisLapDisplay;
     Button startButton, resetButton, endSessionButton;
@@ -33,6 +28,23 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Intent intent = getIntent();
+
+        long[] paceInfo = intent.getLongArrayExtra(PaceSelection.PACE_VALUES);
+        long goalTimeMillis = paceInfo[2];
+        long totalDistance = paceInfo[0];
+        long lapDistance = paceInfo[1];
+
+        try {
+            long numLaps = totalDistance/lapDistance;
+            goalLapMillis = goalTimeMillis/numLaps;
+        }
+        catch (ArithmeticException e){
+            Intent replyIntent = new Intent();
+            //replyIntent.putExtra(NUM_ERROR, true);
+            setResult(RESULT_OK,replyIntent);
+            finish();
+        }
 
         timeDisplay = (TextView)findViewById(R.id.timeDisplay);
         goalLapDisplay = (TextView)findViewById(R.id.goalLapDisplay);
@@ -89,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
                     lastLapEnd = currentTime;
                     lastLapDisplay.setText(millisToString(thisLapTime));
 
-                    paceDisplay.setText(checkPace());
+                    paceDisplay.setText(checkPace(goalLapMillis));
                 }
             }
         });
@@ -97,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
         endSessionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                endSession();
             }
         });
 
@@ -127,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
         return (String.format("%02d", Minutes) + ":" + String.format("%02d", Seconds) + "." + String.format("%02d", CentiSeconds));
     }
 
-    String checkPace() {
+    String checkPace(long goalLapMillis) {
         pace += goalLapMillis - thisLapTime;
 
         if(pace >= 0) {
@@ -148,4 +160,8 @@ public class MainActivity extends AppCompatActivity {
 
         return (pacePrefix + String.format("%02d", Minutes) + ":" + String.format("%02d", Seconds) + "." + String.format("%02d", CentiSeconds));
     }
-}//github test
+
+    public void endSession() {
+        finish();
+    }
+}
