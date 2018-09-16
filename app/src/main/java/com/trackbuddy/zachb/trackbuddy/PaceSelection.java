@@ -1,4 +1,4 @@
-package com.example.zachb.trackbuddy;
+package com.trackbuddy.zachb.trackbuddy;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -9,8 +9,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
-import static com.example.zachb.trackbuddy.MainActivity.NUM_ERROR;
 
 public class PaceSelection extends AppCompatActivity {
 
@@ -83,5 +81,14 @@ public class PaceSelection extends AppCompatActivity {
                 alertDialog.show();
             }
         }
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        distanceInput.getText().clear();
+        secInput.getText().clear();
+        minInput.getText().clear();
+        lapDistanceInput.getText().clear();
     }
 }

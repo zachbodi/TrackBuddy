@@ -1,4 +1,4 @@
-package com.example.zachb.trackbuddy;
+package com.trackbuddy.zachb.trackbuddy;
 
 import android.content.Intent;
 import android.graphics.Color;

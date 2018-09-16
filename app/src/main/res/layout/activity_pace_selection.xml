@@ -4,79 +4,148 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PaceSelection">
+    tools:context=".PaceSelection"
+    tools:layout_editor_absoluteY="25dp">
 
     <EditText
         android:id="@+id/distanceInput"
-        android:layout_width="248dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="68dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="128dp"
+        android:layout_width="128dp"
+        android:layout_height="46dp"
+        android:layout_marginEnd="73dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="73dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="132dp"
         android:ems="10"
-        android:hint="Event Distance"
         android:inputType="number"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/lapDistanceInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="parent" />/>
 
     <EditText
         android:id="@+id/lapDistanceInput"
-        android:layout_width="248dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="68dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="9dp"
+        android:layout_width="126dp"
+        android:layout_height="43dp"
+        android:layout_marginBottom="3dp"
+        android:layout_marginEnd="75dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="75dp"
+        android:layout_marginStart="16dp"
         android:ems="10"
-        android:hint="Lap Distance"
         android:inputType="number"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/distanceInput" />
+        app:layout_constraintBottom_toTopOf="@+id/minInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/distanceInput" />/>
 
     <EditText
         android:id="@+id/minInput"
         android:layout_width="57dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="115dp"
-        android:layout_marginStart="115dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="111dp"
+        android:layout_marginTop="3dp"
         android:ems="10"
         android:hint="min"
         android:inputType="number"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/beginButton"
+        app:layout_constraintEnd_toStartOf="@+id/colon"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/lapDistanceInput" />
 
     <EditText
         android:id="@+id/secInput"
         android:layout_width="51dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="7dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="111dp"
+        android:layout_marginEnd="85dp"
+        android:layout_marginRight="85dp"
+        android:layout_marginTop="4dp"
         android:ems="10"
         android:hint="sec"
         android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/beginButton"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/colon"
-        app:layout_constraintTop_toBottomOf="@+id/lapDistanceInput" />
+        app:layout_constraintTop_toBottomOf="@+id/lapDistanceInput" />/>/>
 
     <TextView
         android:id="@+id/colon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="7dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="17dp"
+        android:layout_width="6dp"
+        android:layout_height="32dp"
+        android:layout_marginBottom="122dp"
+        android:layout_marginTop="7dp"
         android:text=":"
         android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/beginButton"
+        app:layout_constraintEnd_toStartOf="@+id/secInput"
         app:layout_constraintStart_toEndOf="@+id/minInput"
         app:layout_constraintTop_toBottomOf="@+id/lapDistanceInput" />
 
     <Button
         android:id="@+id/beginButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="125dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="138dp"
+        android:layout_marginEnd="129dp"
+        android:layout_marginLeft="130dp"
+        android:layout_marginRight="129dp"
+        android:layout_marginStart="130dp"
+        android:focusable="false"
         android:text="Begin Session"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="130dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/minInput" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="96dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginLeft="71dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="71dp"
+        android:layout_marginTop="136dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="Event Distance:"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/distanceInput"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="96dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginLeft="71dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="71dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="Lap Distance:"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toStartOf="@+id/lapDistanceInput"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="96dp"
+        android:layout_height="42dp"
+        android:layout_marginBottom="112dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginLeft="71dp"
+        android:layout_marginRight="18dp"
+        android:layout_marginStart="71dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="Goal Pace:"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/beginButton"
+        app:layout_constraintEnd_toStartOf="@+id/minInput"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
 </android.support.constraint.ConstraintLayout>
