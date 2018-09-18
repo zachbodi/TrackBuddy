@@ -79,16 +79,11 @@ public class PaceSelection extends AppCompatActivity {
                 });
                 AlertDialog alertDialog = alertDialogBuilder.create();
                 alertDialog.show();
+                distanceInput.getText().clear();
+                secInput.getText().clear();
+                minInput.getText().clear();
+                lapDistanceInput.getText().clear();
             }
         }
-    }
-
-    @Override
-    public void onResume(){
-        super.onResume();
-        distanceInput.getText().clear();
-        secInput.getText().clear();
-        minInput.getText().clear();
-        lapDistanceInput.getText().clear();
     }
 }

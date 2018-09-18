@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     public static final String NUM_ERROR = "com.example.zachb.trackbuddy.extra.NUM_ERROR";
@@ -18,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     int Seconds, Minutes, CentiSeconds;
     boolean running = false;
     String pacePrefix;
+    List<Long> laps = new ArrayList<>();
 
     TextView timeDisplay, goalLapDisplay, paceDisplay, lastLapDisplay, goalTimeDisplay, thisLapDisplay;
     Button startButton, resetButton, endSessionButton;
@@ -63,14 +67,14 @@ public class MainActivity extends AppCompatActivity {
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!running) {
+                if(!running) { //Start Button
                     startTime = SystemClock.uptimeMillis();
                     handler.postDelayed(runnable, 0);
                     running = true;
                     resetButton.setText("Lap");
                     startButton.setText("Pause");
                 }
-                else {
+                else { //Pause Button
                     timeRan += timeRunning;
                     handler.removeCallbacks(runnable);
                     running = false;
@@ -83,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!running) {
+                if(!running) { // Reset Button
                     handler.removeCallbacks(runnable);
                     timeRan = 0;
                     timeRunning = 0;
@@ -96,11 +100,11 @@ public class MainActivity extends AppCompatActivity {
                     thisLapDisplay.setText("00:00.00");
                     paceDisplay.setTextColor(Color.parseColor("#000000"));
                 }
-                else {
+                else { //Lap Button
                     thisLapTime = currentTime - lastLapEnd;
                     lastLapEnd = currentTime;
                     lastLapDisplay.setText(millisToString(thisLapTime));
-
+                    laps.add(thisLapTime);
                     paceDisplay.setText(checkPace(goalLapMillis));
                 }
             }
