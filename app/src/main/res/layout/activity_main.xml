@@ -6,17 +6,104 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <LinearLayout
+        android:id="@+id/startLayout"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignBottom="@id/endSessionLayout"
+        android:layout_marginBottom="50dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/startButton"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight=".50"
+            android:text="Start" />
+
+        <Button
+            android:id="@+id/resetButton"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight=".5"
+            android:text="Reset" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/endSessionLayout"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignBottom="@id/goalTimeDisplay"
+        android:layout_marginBottom="50dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/endSessionButton"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:layout_gravity="bottom"
+            android:text="End Session" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/center"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/timeText"
+        android:layout_width="45dp"
+        android:layout_height="33dp"
+        android:layout_alignBottom="@id/timeDisplay"
+        android:layout_alignLeft="@id/timeDisplay"
+        android:layout_alignRight="@id/timeDisplay"
+        android:layout_marginBottom="38dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="Time:"
+        android:textSize="18sp" />
+
     <TextView
         android:id="@+id/timeDisplay"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:gravity="center"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginTop="100dp"
-        android:layout_marginLeft="25dp"
+        android:layout_alignRight="@id/center"
+        android:layout_alignBottom="@id/center"
+        android:layout_marginBottom="100dp"
+        android:layout_marginRight="20dp"
         android:text="00:00.00"
         android:textColor="@android:color/black"
+        android:textSize="36sp" />
+
+    <TextView
+        android:id="@+id/paceText"
+        android:layout_width="45dp"
+        android:layout_height="33dp"
+        android:layout_alignBottom="@id/paceDisplay"
+        android:layout_alignLeft="@id/paceDisplay"
+        android:layout_alignRight="@id/paceDisplay"
+        android:layout_marginBottom="38dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="Pace:"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/paceDisplay"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@id/center"
+        android:layout_alignBottom="@id/center"
+        android:layout_marginBottom="100dp"
+        android:layout_marginLeft="20dp"
+        android:gravity="center"
+        android:text="00:00.00"
+        android:textColor="#000000"
         android:textSize="36sp" />
 
     <TextView
@@ -25,8 +112,8 @@
         android:layout_height="50dp"
         android:gravity="center"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="30dp"
+        android:layout_alignLeft="@id/center"
+        android:layout_marginLeft="10dp"
         android:text="Goal Lap: 00:00.00"
         android:textColor="@android:color/black"
         android:textSize="14sp" />
@@ -36,8 +123,8 @@
         android:layout_width="154dp"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="30dp"
+        android:layout_alignRight="@id/center"
+        android:layout_marginRight="10dp"
         android:gravity="center"
         android:text="Goal Time: 00:00.00"
         android:textColor="@android:color/black"
@@ -70,31 +157,6 @@
         android:textSize="36sp" />
 
     <TextView
-        android:id="@+id/paceDisplay"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="100dp"
-        android:layout_marginRight="25dp"
-        android:gravity="center"
-        android:text="00:00.00"
-        android:textColor="#000000"
-        android:textSize="36sp" />
-
-    <TextView
-        android:id="@+id/timeText"
-        android:layout_width="45dp"
-        android:layout_height="33dp"
-        android:layout_alignLeft="@id/timeDisplay"
-        android:layout_alignRight="@id/timeDisplay"
-        android:layout_alignBottom="@id/timeDisplay"
-        android:layout_marginBottom="38dp"
-        android:gravity="center_vertical|center_horizontal"
-        android:text="Time:"
-        android:textSize="18sp" />
-
-    <TextView
         android:id="@+id/thisLapText"
         android:layout_width="wrap_content"
         android:layout_height="33dp"
@@ -118,46 +180,5 @@
         android:text="Last Lap:"
         android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/paceText"
-        android:layout_width="45dp"
-        android:layout_height="33dp"
-        android:layout_alignLeft="@id/paceDisplay"
-        android:layout_alignRight="@id/paceDisplay"
-        android:layout_alignBottom="@id/paceDisplay"
-        android:gravity="center_vertical|center_horizontal"
-        android:layout_marginBottom="38dp"
-        android:text="Pace:"
-        android:textSize="18sp" />
-
-    <Button
-        android:id="@+id/startButton"
-        android:layout_width="190dp"
-        android:layout_height="48dp"
-        android:layout_alignLeft="@id/endSessionButton"
-        android:layout_alignBottom="@id/endSessionButton"
-        android:layout_marginBottom="70dp"
-        android:layout_marginLeft="2dp"
-        android:text="Start" />
-
-    <Button
-        android:id="@+id/endSessionButton"
-        android:layout_width="300dp"
-        android:layout_height="48dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="70dp"
-        android:text="End Session" />
-
-    <Button
-        android:id="@+id/resetButton"
-        android:layout_width="190dp"
-        android:layout_height="48dp"
-        android:layout_alignRight="@id/endSessionButton"
-        android:layout_alignBottom="@id/endSessionButton"
-        android:layout_marginBottom="70dp"
-        android:layout_marginRight="2dp"
-        android:text="Reset" />
 
 </RelativeLayout>

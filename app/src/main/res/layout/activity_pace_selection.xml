@@ -11,9 +11,8 @@
         android:layout_width="200dp"
         android:layout_height="45dp"
         android:layout_alignBottom="@+id/eventDistanceText"
-        android:layout_marginBottom="2dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="40dp"
+        android:layout_alignLeft="@id/eventDistanceText"
+        android:layout_marginLeft="130dp"
         android:ems="10"
         android:inputType="number" />/>
 
@@ -21,10 +20,9 @@
         android:id="@+id/lapDistanceInput"
         android:layout_width="200dp"
         android:layout_height="45dp"
-        android:layout_alignBottom="@+id/lapDistanceText"
-        android:layout_marginBottom="2dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="40dp"
+        android:layout_alignBottom="@id/lapDistanceText"
+        android:layout_alignLeft="@id/lapDistanceText"
+        android:layout_marginLeft="130dp"
         android:ems="10"
         android:inputType="number" />/>
 
@@ -32,12 +30,13 @@
         android:id="@+id/minInput"
         android:layout_width="50dp"
         android:layout_height="45dp"
-        android:layout_alignLeft="@+id/lapDistanceInput"
-        android:layout_alignBottom="@+id/goalTimeText"
-        android:layout_marginBottom="2dp"
+        android:layout_alignLeft="@id/goalTimeText"
+        android:layout_alignBottom="@id/goalTimeText"
+        android:layout_marginLeft="130dp"
         android:ems="10"
         android:hint="min"
-        android:inputType="number" />
+        android:inputType="number"
+        android:nextFocusDown="@id/secInput"/>
 
     <EditText
         android:id="@+id/secInput"
@@ -65,51 +64,60 @@
         android:id="@+id/beginButton"
         android:layout_width="125dp"
         android:layout_height="48dp"
-        android:layout_alignParentBottom="true"
+        android:layout_alignTop="@id/goalTimeText"
+        android:layout_marginTop="100dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="100dp"
         android:focusable="false"
-        android:text="Begin Session" />
+        android:text="Begin Session"
+        android:autoSizeTextType="uniform"
+        />
 
     <TextView
         android:id="@+id/lapDistanceText"
-        android:layout_width="100dp"
+        android:layout_width="120dp"
         android:layout_height="45dp"
-        android:layout_alignBottom="@+id/goalTimeText"
-        android:layout_marginBottom="100dp"
+        android:layout_alignRight="@id/eventDistanceText"
+        android:layout_alignTop="@id/eventDistanceText"
+        android:layout_marginTop="100dp"
         android:gravity="right|center_vertical"
         android:text="Lap Distance:"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="30dp"
-        android:textSize="15sp"
+        android:textSize="13sp"
          />
+
+    <LinearLayout
+        android:id="@+id/center"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+    </LinearLayout>
 
     <TextView
         android:id="@+id/eventDistanceText"
-        android:layout_width="110dp"
+        android:layout_width="120dp"
         android:layout_height="45dp"
-        android:layout_alignBottom="@+id/lapDistanceText"
-        android:layout_marginBottom="100dp"
+        android:layout_alignBottom="@+id/center"
+        android:layout_alignRight="@id/center"
+        android:layout_marginRight="60dp"
+        android:layout_marginBottom="77.5dp"
         android:gravity="right|center_vertical"
         android:text="Event Distance:"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="20dp"
-        android:textSize="15sp" />
+        android:textSize="13sp"
+        />
 
     <TextView
         android:id="@+id/goalTimeText"
-        android:layout_width="100dp"
+        android:layout_width="120dp"
         android:layout_height="45dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="200dp"
+        android:layout_alignRight="@id/lapDistanceText"
+        android:layout_alignTop="@id/lapDistanceText"
+        android:layout_marginTop="100dp"
         android:gravity="right|center_vertical"
         android:text="Goal Time:"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="30dp"
-        android:textSize="15sp" />
+        android:textSize="13sp" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/newSessionText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
