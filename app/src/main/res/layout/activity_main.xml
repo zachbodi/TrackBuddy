@@ -19,14 +19,16 @@
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_weight=".50"
-            android:text="Start" />
+            android:text="Start"
+            android:autoSizeTextType="uniform"/>
 
         <Button
             android:id="@+id/resetButton"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_weight=".5"
-            android:text="Reset" />
+            android:text="Reset"
+            android:autoSizeTextType="uniform"/>
 
     </LinearLayout>
 
@@ -44,7 +46,8 @@
             android:layout_height="48dp"
             android:layout_weight="1"
             android:layout_gravity="bottom"
-            android:text="End Session" />
+            android:text="End Session"
+            android:autoSizeTextType="uniform"/>
     </LinearLayout>
 
     <LinearLayout
@@ -66,7 +69,8 @@
         android:layout_marginBottom="38dp"
         android:gravity="center_vertical|center_horizontal"
         android:text="Time:"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:autoSizeTextType="uniform"/>
 
     <TextView
         android:id="@+id/timeDisplay"
@@ -79,7 +83,8 @@
         android:layout_marginRight="20dp"
         android:text="00:00.00"
         android:textColor="@android:color/black"
-        android:textSize="36sp" />
+        android:textSize="36sp"
+        android:autoSizeTextType="uniform"/>
 
     <TextView
         android:id="@+id/paceText"
@@ -91,7 +96,8 @@
         android:layout_marginBottom="38dp"
         android:gravity="center_vertical|center_horizontal"
         android:text="Pace:"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:autoSizeTextType="uniform"/>
 
     <TextView
         android:id="@+id/paceDisplay"
@@ -104,31 +110,36 @@
         android:gravity="center"
         android:text="00:00.00"
         android:textColor="#000000"
-        android:textSize="36sp" />
+        android:textSize="36sp"
+        android:autoSizeTextType="uniform"
+        />
 
     <TextView
         android:id="@+id/goalLapDisplay"
-        android:layout_width="154dp"
-        android:layout_height="50dp"
+        android:layout_width="160dp"
+        android:layout_height="22dp"
         android:gravity="center"
         android:layout_alignParentBottom="true"
         android:layout_alignLeft="@id/center"
         android:layout_marginLeft="10dp"
         android:text="Goal Lap: 00:00.00"
         android:textColor="@android:color/black"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:autoSizeTextType="uniform"/>
 
     <TextView
         android:id="@+id/goalTimeDisplay"
         android:layout_width="154dp"
-        android:layout_height="50dp"
+        android:layout_height="22dp"
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@id/center"
         android:layout_marginRight="10dp"
         android:gravity="center"
         android:text="Goal Time: 00:00.00"
         android:textColor="@android:color/black"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:autoSizeTextType="uniform"
+        />
 
     <TextView
         android:id="@+id/thisLapDisplay"
@@ -141,7 +152,8 @@
         android:gravity="center"
         android:text="00:00.00"
         android:textColor="@android:color/black"
-        android:textSize="36sp" />
+        android:textSize="36sp"
+        android:autoSizeTextType="uniform"/>
 
     <TextView
         android:id="@+id/lastLapDisplay"
@@ -154,7 +166,8 @@
         android:gravity="center"
         android:text="00:00.00"
         android:textColor="@android:color/black"
-        android:textSize="36sp" />
+        android:textSize="36sp"
+        android:autoSizeTextType="uniform"/>
 
     <TextView
         android:id="@+id/thisLapText"
@@ -166,7 +179,8 @@
         android:gravity="center_vertical|center_horizontal"
         android:layout_marginBottom="38dp"
         android:text="This Lap:"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:autoSizeTextType="uniform"/>
 
     <TextView
         android:id="@+id/lastLapText"
@@ -178,7 +192,8 @@
         android:gravity="center_vertical|center_horizontal"
         android:layout_marginBottom="38dp"
         android:text="Last Lap:"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:autoSizeTextType="uniform"/>
 
 
 </RelativeLayout>

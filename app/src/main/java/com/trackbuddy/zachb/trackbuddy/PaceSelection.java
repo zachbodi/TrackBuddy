@@ -26,6 +26,8 @@ public class PaceSelection extends AppCompatActivity {
 
         beginButton = (Button)findViewById(R.id.beginButton);
 
+        Button testButton = (Button)findViewById(R.id.button2);
+
         distanceInput = (EditText)findViewById(R.id.distanceInput);
         lapDistanceInput = (EditText)findViewById(R.id.lapDistanceInput);
         minInput = (EditText)findViewById(R.id.minInput);
@@ -50,6 +52,15 @@ public class PaceSelection extends AppCompatActivity {
                 }
             }
         });
+
+        testButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent testIntent = new Intent(view.getContext(), histWorkoutReview.class);
+                startActivityForResult(testIntent, 1);
+            }
+        });
+
     }
 
     long calculateMilliseconds(long minutes, long seconds) {

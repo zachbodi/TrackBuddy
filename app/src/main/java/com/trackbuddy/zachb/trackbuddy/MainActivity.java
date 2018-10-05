@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
 import android.os.SystemClock;
+import android.support.v4.content.res.TypedArrayUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,13 +16,14 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String NUM_ERROR = "com.example.zachb.trackbuddy.extra.NUM_ERROR";
+    public static final String LAP_LIST = "com.example.zachb.trackbuddy.extra.LAP_LIST";
+    public static final String GOAL_LAP = "com.example.zachb.trackbuddy.extra.GOAL_LAP";
 
     long startTime, currentTime, timeRunning, timeRan, thisLapTime, lastLapEnd, pace, paceAbs, goalLapMillis = 0;
     int Seconds, Minutes, CentiSeconds;
     boolean running = false;
     String pacePrefix;
-    List<Long> laps = new ArrayList<>();
+    ArrayList<Long> laps = new ArrayList<>();
 
     TextView timeDisplay, goalLapDisplay, paceDisplay, lastLapDisplay, goalTimeDisplay, thisLapDisplay;
     Button startButton, resetButton, endSessionButton;
@@ -93,12 +95,15 @@ public class MainActivity extends AppCompatActivity {
                     timeRunning = 0;
                     lastLapEnd = 0;
                     pace = 0;
+                    thisLapTime = 0;
+                    lastLapEnd = 0;
                     startButton.setText("Start");
                     timeDisplay.setText("00:00.00");
                     paceDisplay.setText("00:00.00");
                     lastLapDisplay.setText("00:00.00");
                     thisLapDisplay.setText("00:00.00");
                     paceDisplay.setTextColor(Color.parseColor("#000000"));
+                    laps.clear();
                 }
                 else { //Lap Button
                     thisLapTime = currentTime - lastLapEnd;
@@ -166,6 +171,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void endSession() {
+        if(timeRunning != 0) {
+            thisLapTime = currentTime - lastLapEnd;
+            lastLapEnd = currentTime;
+            laps.add(thisLapTime);
+        }
+
+        Intent finishIntent = new Intent(this, lapReview.class);
+
+        long [] lapsArray = new long[laps.size()];
+        for (int i = 0; i < laps.size(); i++) {
+            lapsArray[i] = Long.parseLong(laps.get(i).toString());
+        }
+
+        finishIntent.putExtra(LAP_LIST, lapsArray);
+        finishIntent.putExtra(GOAL_LAP, goalLapMillis);
+        startActivityForResult(finishIntent, 1);
         finish();
     }
 }

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".lapReview">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="Workout Review"
+        android:layout_weight=".05"
+        android:autoSizeTextType="uniform"
+        android:textColor="#000000"/>
+
+    <ListView
+        android:id="@+id/android:list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".875" />
+
+    <Button
+        android:id="@+id/returnButton"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".075"
+        android:text="Return to Pace Selection"
+        android:autoSizeTextType="uniform"/>
+</LinearLayout>

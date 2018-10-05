@@ -4,14 +4,17 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/app_icon_foreground"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/app_icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.trackbuddy.zachb.trackbuddy.MainActivity"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name="com.trackbuddy.zachb.trackbuddy.PaceSelection"
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".PaceSelection"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,6 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".lapReview"></activity>
+        <activity android:name=".histLapReview"></activity>
+        <activity android:name=".histWorkoutReview"></activity>
     </application>
 
 </manifest>
