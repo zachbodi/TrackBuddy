@@ -26,7 +26,7 @@ public class PaceSelection extends AppCompatActivity {
 
         beginButton = (Button)findViewById(R.id.beginButton);
 
-        Button testButton = (Button)findViewById(R.id.button2);
+        Button reviewButton = (Button)findViewById(R.id.reviewButton);
 
         distanceInput = (EditText)findViewById(R.id.distanceInput);
         lapDistanceInput = (EditText)findViewById(R.id.lapDistanceInput);
@@ -36,10 +36,17 @@ public class PaceSelection extends AppCompatActivity {
         beginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(TextUtils.isEmpty(lapDistanceInput.getText()) || TextUtils.isEmpty(distanceInput.getText()) || TextUtils.isEmpty(minInput.getText()) || TextUtils.isEmpty(secInput.getText())) {
+                if(TextUtils.isEmpty(lapDistanceInput.getText()) || TextUtils.isEmpty(distanceInput.getText()) || (TextUtils.isEmpty(minInput.getText()) && TextUtils.isEmpty(secInput.getText()))) {
 
                 }
                 else{
+                    if(TextUtils.isEmpty(minInput.getText())) {
+                        minInput.setText("00");
+                    }
+                    if(TextUtils.isEmpty(secInput.getText())) {
+                        secInput.setText("00");
+                    }
+
                     distance = Long.parseLong(distanceInput.getText().toString());
                     lapDistance = Long.parseLong(lapDistanceInput.getText().toString());
                     minutes = Long.parseLong(minInput.getText().toString());
@@ -53,7 +60,7 @@ public class PaceSelection extends AppCompatActivity {
             }
         });
 
-        testButton.setOnClickListener(new View.OnClickListener() {
+        reviewButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent testIntent = new Intent(view.getContext(), histWorkoutReview.class);

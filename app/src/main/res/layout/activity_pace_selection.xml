@@ -60,19 +60,6 @@
         android:text=":"
         android:textSize="24sp" />
 
-    <Button
-        android:id="@+id/beginButton"
-        android:layout_width="125dp"
-        android:layout_height="40dp"
-        android:layout_alignTop="@id/goalTimeText"
-        android:layout_marginTop="100dp"
-        android:layout_centerHorizontal="true"
-        android:focusable="false"
-        android:text="Begin Session"
-        android:textSize="10sp"
-        android:autoSizeTextType="uniform"
-        />
-
     <TextView
         android:id="@+id/lapDistanceText"
         android:layout_width="120dp"
@@ -83,6 +70,7 @@
         android:gravity="right|center_vertical"
         android:text="Lap Distance:"
         android:textSize="13sp"
+        android:maxLines="1"
          />
 
     <LinearLayout
@@ -104,6 +92,7 @@
         android:gravity="right|center_vertical"
         android:text="Event Distance:"
         android:textSize="13sp"
+        android:maxLines="1"
         />
 
     <TextView
@@ -115,7 +104,8 @@
         android:layout_marginTop="100dp"
         android:gravity="right|center_vertical"
         android:text="Goal Time:"
-        android:textSize="13sp"/>
+        android:textSize="13sp"
+        android:maxLines="1"/>
 
     <TextView
         android:id="@+id/newSessionText"
@@ -129,12 +119,34 @@
         android:text="New Session"
         android:autoSizeTextType="uniform"/>
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:text="Button" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/beginButton"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".5"
+            android:layout_alignTop="@id/goalTimeText"
+            android:layout_centerHorizontal="true"
+            android:autoSizeTextType="uniform"
+            android:focusable="false"
+            android:maxLines="1"
+            android:text="Begin Session"
+            android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/reviewButton"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".5"
+            android:autoSizeTextType="uniform"
+            android:maxLines="1"
+            android:text="Review Past Workouts"
+            android:focusable="false"/>
+    </LinearLayout>
 
 </RelativeLayout>

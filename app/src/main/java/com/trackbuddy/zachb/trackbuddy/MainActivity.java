@@ -184,9 +184,11 @@ public class MainActivity extends AppCompatActivity {
             lapsArray[i] = Long.parseLong(laps.get(i).toString());
         }
 
-        finishIntent.putExtra(LAP_LIST, lapsArray);
-        finishIntent.putExtra(GOAL_LAP, goalLapMillis);
-        startActivityForResult(finishIntent, 1);
+        if(laps.size() != 0){
+            finishIntent.putExtra(LAP_LIST, lapsArray);
+            finishIntent.putExtra(GOAL_LAP, goalLapMillis);
+            startActivityForResult(finishIntent, 1);
+        }
         finish();
     }
 }
