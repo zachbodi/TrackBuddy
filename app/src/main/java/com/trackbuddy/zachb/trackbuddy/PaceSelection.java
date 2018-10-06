@@ -2,6 +2,7 @@ package com.trackbuddy.zachb.trackbuddy;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,12 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 
 public class PaceSelection extends AppCompatActivity {
 
@@ -63,8 +70,26 @@ public class PaceSelection extends AppCompatActivity {
         reviewButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent testIntent = new Intent(view.getContext(), histWorkoutReview.class);
-                startActivityForResult(testIntent, 1);
+                SharedPreferences preferences = getSharedPreferences("PREFERENCES", MODE_PRIVATE);
+                String currentListJson = preferences.getString("WORKOUT_HIST", "NULL");
+
+                if(currentListJson != "NULL") {
+                    Intent testIntent = new Intent(view.getContext(), histWorkoutReview.class);
+                    startActivityForResult(testIntent, 1);
+                }
+                else {
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(PaceSelection.this);
+                    alertDialogBuilder.setTitle("No Workouts");
+                    alertDialogBuilder.setMessage("You have to work out first!");
+                    alertDialogBuilder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface arg0, int arg1) {
+
+                        }
+                    });
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+                    alertDialog.show();
+                }
             }
         });
 

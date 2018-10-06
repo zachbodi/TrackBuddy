@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -23,11 +24,12 @@ public class histLapReview extends ListActivity {
     int Seconds, Minutes, CentiSeconds;
     long timeDifference;
     String prefix;
+    TextView dateText, distanceText, lapText, goalLapText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lap_review);
+        setContentView(R.layout.activity_hist_lap_review);
 
         SharedPreferences preferences = getSharedPreferences("PREFERENCES", MODE_PRIVATE);
         Gson gson = new Gson();
@@ -36,19 +38,36 @@ public class histLapReview extends ListActivity {
         String currentListJson = preferences.getString("WORKOUT_HIST", "NULL");
         ArrayList<long[]> currentListNorm = gson.fromJson(currentListJson, type);
 
+        Type infoType = new TypeToken<ArrayList<String[]>>() {}.getType();
+        String currentInfoListJson = preferences.getString("WORKOUT_DATES", "NULL");
+        ArrayList<String[]> currentInfoListNorm = gson.fromJson(currentInfoListJson, infoType);
+
         Intent workoutIntent = getIntent();
         int workoutIndexToCall = workoutIntent.getIntExtra("WORKOUT", 0);
         final long [] lapsArray = currentListNorm.get(workoutIndexToCall);
-        long goalLap = 0;
+        final String [] infoArray = currentInfoListNorm.get(workoutIndexToCall);
+
+        String date = infoArray[0];
+        String eventDistanceInfo = infoArray[1];
+        String lapDistanceInfo = infoArray[2];
+        String goalLapInfo = infoArray[3];
 
         returnButton = (Button)findViewById(R.id.returnButton);
+        dateText = (TextView)findViewById(R.id.dateText);
+        distanceText = (TextView)findViewById(R.id.distanceText);
+        lapText = (TextView)findViewById(R.id.lapText);
+        goalLapText = (TextView)findViewById(R.id.goalLapText);
 
         adapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listItems);
         setListAdapter(adapter);
 
-        //listItems.add("Goal Lap: " + millisToString(goalLap));
+        distanceText.setText(eventDistanceInfo);
+        lapText.setText(lapDistanceInfo);
+        goalLapText.setText(goalLapInfo);
+        dateText.setText(date);
 
-        for (int i = 0; i < lapsArray.length; i++) {
+        long goalLap = lapsArray[0];
+        for (int i = 1; i < lapsArray.length; i++) {
 
             timeDifference = lapsArray[i] - goalLap;
             prefix = "+";
@@ -58,7 +77,7 @@ public class histLapReview extends ListActivity {
                 prefix = "-";
             }
 
-            listItems.add("Lap " + (i + 1) + ": " + millisToString(lapsArray[i]) + "    (" + prefix +
+            listItems.add("Lap " + (i) + ": " + millisToString(lapsArray[i]) + "    (" + prefix +
                     millisToString(timeDifference) + ")");
 
         }

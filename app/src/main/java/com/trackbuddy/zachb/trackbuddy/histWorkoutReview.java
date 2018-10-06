@@ -29,7 +29,7 @@ public class histWorkoutReview extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lap_review);
+        setContentView(R.layout.activity_hist_workout_review);
 
         SharedPreferences preferences = getSharedPreferences("PREFERENCES", MODE_PRIVATE);
         Gson gson = new Gson();
@@ -38,7 +38,9 @@ public class histWorkoutReview extends ListActivity {
         String currentListJson = preferences.getString("WORKOUT_HIST", "NULL");
         final ArrayList<long[]> currentListNorm = gson.fromJson(currentListJson, type);
 
-        long goalLap = 0;
+        Type infoType = new TypeToken<ArrayList<String[]>>() {}.getType();
+        String currentInfoListJson = preferences.getString("WORKOUT_DATES", "NULL");
+        final ArrayList<String[]> currentInfoListNorm = gson.fromJson(currentInfoListJson, infoType);
 
         returnButton = (Button)findViewById(R.id.returnButton);
 
@@ -47,8 +49,8 @@ public class histWorkoutReview extends ListActivity {
 
         //listItems.add("Goal Lap: " + millisToString(goalLap));
 
-        for (int i = 0; i < currentListNorm.size(); i++) {
-            listItems.add("Workout " + (i + 1));
+        for (int i = currentListNorm.size() - 1; i >= 0; i--) {
+            listItems.add("Workout " + String.valueOf(i+1) + ": " + currentInfoListNorm.get(i)[0]);
         }
         adapter.notifyDataSetChanged();
 
@@ -66,7 +68,7 @@ public class histWorkoutReview extends ListActivity {
             public void onItemClick(AdapterView<?> adapter, View v, int position,
                                     long arg3)
             {
-                workoutIndexToCall = position;
+                workoutIndexToCall = currentInfoListNorm.size() - 1 - position;
                 Intent workoutIntent = new Intent(adapter.getContext(), histLapReview.class);
                 workoutIntent.putExtra("WORKOUT", workoutIndexToCall);
                 startActivityForResult(workoutIntent, 1);

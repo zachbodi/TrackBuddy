@@ -47,7 +47,8 @@
             android:layout_weight="1"
             android:layout_gravity="bottom"
             android:text="End Session"
-            android:autoSizeTextType="uniform"/>
+            android:autoSizeTextType="uniform"
+            android:maxLines="1"/>
     </LinearLayout>
 
     <LinearLayout

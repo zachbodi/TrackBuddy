@@ -18,6 +18,65 @@
         android:autoSizeTextType="uniform"
         android:textColor="#000000"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".05"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/dateText"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="10/12/2018 (12:58pm)"
+            android:textColor="#000000"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/distanceText"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="Distance: 1500 Meters"
+            android:textColor="#000000"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".05"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/lapText"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="Lap: 1000 Meters"
+            android:textColor="#000000"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/goalLapText"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="Goal Lap: 00:00.00"
+            android:textColor="#000000"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
     <ListView
         android:id="@+id/android:list"
         android:layout_width="match_parent"
@@ -29,6 +88,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight=".075"
-        android:text="Return to Pace Selection"
-        android:autoSizeTextType="uniform"/>
+        android:text="Return to Workouts"
+        android:autoSizeTextType="uniform"
+        android:maxLines="1"/>
 </LinearLayout>

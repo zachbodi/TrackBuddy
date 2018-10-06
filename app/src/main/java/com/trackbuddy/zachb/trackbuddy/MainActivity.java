@@ -38,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
 
         long[] paceInfo = intent.getLongArrayExtra(PaceSelection.PACE_VALUES);
         long goalTimeMillis = paceInfo[2];
-        long totalDistance = paceInfo[0];
-        long lapDistance = paceInfo[1];
+        final long totalDistance = paceInfo[0];
+        final long lapDistance = paceInfo[1];
 
         try {
             long numLaps = totalDistance/lapDistance;
@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
         }
         catch (ArithmeticException e){
             Intent replyIntent = new Intent();
-            //replyIntent.putExtra(NUM_ERROR, true);
             setResult(RESULT_OK,replyIntent);
             finish();
         }
@@ -118,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         endSessionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                endSession();
+                endSession(totalDistance, lapDistance);
             }
         });
 
@@ -170,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
         return (pacePrefix + String.format("%02d", Minutes) + ":" + String.format("%02d", Seconds) + "." + String.format("%02d", CentiSeconds));
     }
 
-    public void endSession() {
+    public void endSession(long distance, long lapDistance) {
         if(timeRunning != 0) {
             thisLapTime = currentTime - lastLapEnd;
             lastLapEnd = currentTime;
@@ -187,6 +186,8 @@ public class MainActivity extends AppCompatActivity {
         if(laps.size() != 0){
             finishIntent.putExtra(LAP_LIST, lapsArray);
             finishIntent.putExtra(GOAL_LAP, goalLapMillis);
+            finishIntent.putExtra("EVENT_DISTANCE", distance);
+            finishIntent.putExtra("LAP_DISTANCE", lapDistance);
             startActivityForResult(finishIntent, 1);
         }
         finish();
