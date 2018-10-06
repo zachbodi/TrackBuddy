@@ -6,7 +6,7 @@ android {
         applicationId "com.trackbuddy.zachb.trackbuddy"
         minSdkVersion 15
         targetSdkVersion 28
-        versionCode 7
+        versionCode 8
         versionName "2.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }

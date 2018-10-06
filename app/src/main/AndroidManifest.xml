@@ -12,7 +12,7 @@
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
+            />
         <activity
             android:name=".PaceSelection"
             android:screenOrientation="portrait">
@@ -22,9 +22,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".lapReview"></activity>
-        <activity android:name=".histLapReview"></activity>
-        <activity android:name=".histWorkoutReview"></activity>
+        <activity
+            android:name=".lapReview"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".histLapReview"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".histWorkoutReview"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

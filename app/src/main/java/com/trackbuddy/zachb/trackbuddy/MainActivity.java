@@ -8,6 +8,7 @@ import android.support.v4.content.res.TypedArrayUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Intent intent = getIntent();
+
 
         long[] paceInfo = intent.getLongArrayExtra(PaceSelection.PACE_VALUES);
         long goalTimeMillis = paceInfo[2];
